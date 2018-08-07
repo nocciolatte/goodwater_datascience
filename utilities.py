@@ -39,23 +39,3 @@ def clv(aov, txn, m1_ret, m3_ret, m12_ret):
 
 
     return pv + aov * txn
-
-
-
-def calculateMetrics(df, feature_name):
-    mean = df[feature_name].mean()
-    std = df[feature_name].std()
-    one_std_lower = mean - std
-    one_std_upper = mean + std
-    two_std_lower = mean - 2 * std
-    two_std_upper = mean + 2 * std
-
-    return mean, std, one_std_lower, one_std_upper, two_std_lower, two_std_upper
-
-
-def printMetrics(df, feature_name, feature_name_descriptive):
-    mean, std, one_std_lower, one_std_upper, two_std_lower, \
-        two_std_upper = calculateMetrics(df, feature_name)
-
-    print("$%20s Mean: %10.2f || 1std [%5.2f, %5.2f] || 2std [%5.2f, %5.2f]" % (feature_name_descriptive, mean, one_std_lower,
-               one_std_upper, two_std_lower, two_std_upper))
